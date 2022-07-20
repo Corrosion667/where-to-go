@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "where-to-go"
+version = "0.1.0"
+description = ""
+authors = ["Artem Nechai <lenikol95@mail.ru>"]
+readme = "README.md"
+packages = [{include = "where_to_go"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
