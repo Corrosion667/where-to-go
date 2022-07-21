@@ -7,4 +7,3 @@ class MainPageView(TemplateView):
     """View for main (home) site page."""
 
     template_name = 'main_page.html'
-
