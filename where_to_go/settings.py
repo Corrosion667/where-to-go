@@ -77,13 +77,20 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = os.getenv('LOCALE', default='ru')
+
+LANGUAGES = (
+    ('en-us', ('English')),
+    ('ru', ('Russian')),
+)
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_TZ = True
+
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
 STATIC_URL = 'static/'
 
