@@ -9,9 +9,19 @@ lint:
 db-clean:
 	@rm db.sqlite3 || true
 
-migrate:
+makemigrations:
 	$(MANAGE) makemigrations
+
+migrate:
 	$(MANAGE) migrate
+
+mmigrate: makemigrations migrate
 
 run:
 	$(MANAGE) runserver
+
+compile:
+	$(MANAGE) compilemessages --ignore=cache --ignore=.venv/*/locale
+
+messages:
+	$(MANAGE) makemessages -l ru
