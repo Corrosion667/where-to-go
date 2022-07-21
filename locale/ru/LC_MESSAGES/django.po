@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-21 11:23+0000\n"
+"POT-Creation-Date: 2022-07-21 14:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,30 +24,46 @@ msgstr ""
 msgid "Interesting places to visit"
 msgstr "Интересные места для посещения"
 
-#: where_to_go/places/models.py:12
+#: where_to_go/places/models.py:13
 msgid "Title"
 msgstr "Название"
 
-#: where_to_go/places/models.py:13
+#: where_to_go/places/models.py:14
 msgid "Short description"
 msgstr "Краткое описание"
 
-#: where_to_go/places/models.py:14
+#: where_to_go/places/models.py:15
 msgid "Full description"
 msgstr "Полное описание"
 
-#: where_to_go/places/models.py:15
+#: where_to_go/places/models.py:16
 msgid "Latitude"
 msgstr "Широта"
 
-#: where_to_go/places/models.py:16
+#: where_to_go/places/models.py:17
 msgid "Longitude"
 msgstr "Долгота"
 
-#: where_to_go/places/models.py:21
+#: where_to_go/places/models.py:22
 msgid "Place of interest"
 msgstr "Достопримечательность"
 
-#: where_to_go/places/models.py:22
+#: where_to_go/places/models.py:23
 msgid "Places of interest"
 msgstr "Достопримечательности"
+
+#: where_to_go/places/models.py:37
+msgid "Display order"
+msgstr "Порядок оторбажения"
+
+#: where_to_go/places/models.py:45
+msgid "File with image"
+msgstr "Файл картинки"
+
+#: where_to_go/places/models.py:50
+msgid "Image"
+msgstr "Изображение"
+
+#: where_to_go/places/models.py:51
+msgid "Images"
+msgstr "Изображения"

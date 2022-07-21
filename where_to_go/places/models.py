@@ -4,6 +4,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 TITLE_MAX_LENGTH = 200
+NON_ZERO_INDEX = 1
 
 
 class Place(models.Model):
@@ -28,3 +29,32 @@ class Place(models.Model):
             Title of place.
         """
         return self.title
+
+
+class Image(models.Model):
+    """Class for places' images."""
+
+    position = models.PositiveIntegerField(default=NON_ZERO_INDEX, verbose_name=_('Display order'))
+    place = models.ForeignKey(
+        Place,
+        on_delete=models.SET_NULL,
+        related_name='images',
+        blank=True,
+        null=True,
+        verbose_name=Place._meta.verbose_name,
+    )
+    file = models.ImageField(verbose_name=_('File with image'))
+
+    class Meta(object):
+        """Meta information of model."""
+
+        verbose_name = _('Image')
+        verbose_name_plural = _('Images')
+
+    def __str__(self) -> str:
+        """Present object as a string.
+
+        Returns:
+            Position with place of interest to which image attached to.
+        """
+        return f'{self.position} {self.place}'
