@@ -1,5 +1,7 @@
 """Models for places app."""
 
+import os
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -43,7 +45,10 @@ class Image(models.Model):
         null=True,
         verbose_name=Place._meta.verbose_name,
     )
-    file = models.ImageField(verbose_name=_('File with image'))
+    file = models.ImageField(
+        verbose_name=_('File with image'),
+        upload_to=os.path.join('images', 'places'),
+    )
 
     class Meta(object):
         """Meta information of model."""
