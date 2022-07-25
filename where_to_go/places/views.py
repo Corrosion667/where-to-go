@@ -1,36 +1,7 @@
 """Module with views logic of the places app."""
 
 from django.views.generic import TemplateView
-
-geo_fixture = {
-      "type": "FeatureCollection",
-      "features": [
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Point",
-            "coordinates": [37.62, 55.793676]
-          },
-          "properties": {
-            "title": "«Легенды Москвы",
-            "placeId": "moscow_legends",
-            "detailsUrl": "https://raw.githubusercontent.com/devmanorg/where-to-go-frontend/master/places/moscow_legends.json"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Point",
-            "coordinates": [37.64, 55.753676]
-          },
-          "properties": {
-            "title": "Крыши24.рф",
-            "placeId": "roofs24",
-            "detailsUrl": "https://raw.githubusercontent.com/devmanorg/where-to-go-frontend/master/places/roofs24.json"
-          }
-        },
-      ],
-    }
+from where_to_go.places.models import Place
 
 
 class MainPageView(TemplateView):
@@ -45,8 +16,26 @@ class MainPageView(TemplateView):
             kwargs: keyword arguments in a dictionary.
 
         Returns:
-            Context with added geo data to it.
+            Context with added places' geo data to it.
         """
         context = super().get_context_data(**kwargs)
-        context['geo_data'] = geo_fixture
+        places = Place.objects.all()
+        geo_features = []
+        for place in places:
+            geo_features.append(
+                {
+                    'type': 'Feature',
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [place.latitude, place.longitude],
+                    },
+                    'properties': {
+                        'title': place.title,
+                        'placeId': place.pk,
+                        'detailsUrl': 'https://raw.githubusercontent.com/devmanorg/where-to-go-frontend/master/places/moscow_legends.json'
+                    },
+                },
+            )
+        geo_data = {'type': 'FeatureCollection', 'features': geo_features}
+        context['geo_data'] = geo_data
         return context
