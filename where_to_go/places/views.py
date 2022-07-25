@@ -1,6 +1,10 @@
 """Module with views logic of the places app."""
 
+from django.core.handlers.wsgi import WSGIRequest
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
+
 from where_to_go.places.models import Place
 
 
@@ -39,3 +43,18 @@ class MainPageView(TemplateView):
         geo_data = {'type': 'FeatureCollection', 'features': geo_features}
         context['geo_data'] = geo_data
         return context
+
+
+def get_place_details(request: WSGIRequest, pk: int) -> HttpResponse:
+    """View for place details.
+
+    Args:
+        request: wsgi request received from user.
+        pk: id of place which details to get.
+
+    Returns:
+        HTTPResponse with place details or 404 page if place does not exist.
+    """
+
+    place = get_object_or_404(Place, pk=pk)
+    return HttpResponse(place.title)
