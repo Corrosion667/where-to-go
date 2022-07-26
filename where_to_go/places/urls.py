@@ -1,4 +1,4 @@
-"""URL routing of the places app."""
+"""URL routing of the Places app."""
 
 from django.urls import path
 

@@ -1,4 +1,4 @@
-"""Models for places app."""
+"""Models for Places app."""
 
 import os
 
@@ -13,8 +13,8 @@ class Place(models.Model):
     """Class for objects of interesting places to visit."""
 
     title = models.CharField(unique=True, max_length=TITLE_MAX_LENGTH, verbose_name=_('Title'))
-    short_description = models.TextField(verbose_name=_('Short description'), blank=True)
-    full_description = models.TextField(verbose_name=_('Full description'), blank=True)
+    description_short = models.TextField(verbose_name=_('Short description'), blank=True)
+    description_long = models.TextField(verbose_name=_('Full description'), blank=True)
     latitude = models.FloatField(verbose_name=_('Latitude'))
     longitude = models.FloatField(verbose_name=_('Longitude'))
 
@@ -31,6 +31,15 @@ class Place(models.Model):
             Title of place.
         """
         return self.title
+
+    @property
+    def imgs(self) -> models.QuerySet:
+        """Get evaluated queryset with Images linked with Place object.
+
+        Returns:
+            Images QuerySet.
+        """
+        return self.images.all()
 
 
 class Image(models.Model):

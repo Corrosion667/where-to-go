@@ -9,13 +9,13 @@ lint:
 db-clean:
 	@rm db.sqlite3 || true
 
-makemigrations:
+migrations:
 	$(MANAGE) makemigrations
 
 migrate:
 	$(MANAGE) migrate
 
-mmigrate: makemigrations migrate
+mmigrate: migrations migrate
 
 run:
 	$(MANAGE) runserver

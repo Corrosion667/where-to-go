@@ -1,11 +1,14 @@
-"""Module with views logic of the places app."""
+"""Module with views logic of the Places app."""
 
 from django.core.handlers.wsgi import WSGIRequest
-from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
 
 from where_to_go.places.models import Place
+from where_to_go.places.schemas import PlaceSchema
+
+JSON_INDENT = 4
 
 
 class MainPageView(TemplateView):
@@ -36,7 +39,7 @@ class MainPageView(TemplateView):
                     'properties': {
                         'title': place.title,
                         'placeId': place.pk,
-                        'detailsUrl': 'https://raw.githubusercontent.com/devmanorg/where-to-go-frontend/master/places/moscow_legends.json'
+                        'detailsUrl': 'https://raw.githubusercontent.com/devmanorg/where-to-go-frontend/master/places/moscow_legends.json',
                     },
                 },
             )
@@ -45,7 +48,7 @@ class MainPageView(TemplateView):
         return context
 
 
-def get_place_details(request: WSGIRequest, pk: int) -> HttpResponse:
+def get_place_details(request: WSGIRequest, pk: int) -> JsonResponse:
     """View for place details.
 
     Args:
@@ -53,8 +56,11 @@ def get_place_details(request: WSGIRequest, pk: int) -> HttpResponse:
         pk: id of place which details to get.
 
     Returns:
-        HTTPResponse with place details or 404 page if place does not exist.
+        JsonResponse with place details or 404 page if place does not exist.
     """
-
     place = get_object_or_404(Place, pk=pk)
-    return HttpResponse(place.title)
+    schema = PlaceSchema()
+    serialised_place = schema.dump(place)
+    return JsonResponse(
+        serialised_place, json_dumps_params={'ensure_ascii': False, 'indent': JSON_INDENT},
+    )
