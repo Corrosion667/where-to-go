@@ -42,7 +42,7 @@ class MainPageView(TemplateView):
                         'placeId': place.pk,
                         'detailsUrl': reverse('place_details', args=[place.pk]),
                     },
-                }
+                },
             )
         geo_data = {'type': 'FeatureCollection', 'features': geo_jsons}
         context['geo_data'] = geo_data
