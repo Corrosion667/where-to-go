@@ -3,6 +3,7 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from django.views.generic import TemplateView
 
 from where_to_go.places.models import Place
@@ -27,9 +28,9 @@ class MainPageView(TemplateView):
         """
         context = super().get_context_data(**kwargs)
         places = Place.objects.all()
-        geo_features = []
+        geo_jsons = []
         for place in places:
-            geo_features.append(
+            geo_jsons.append(
                 {
                     'type': 'Feature',
                     'geometry': {
@@ -39,11 +40,11 @@ class MainPageView(TemplateView):
                     'properties': {
                         'title': place.title,
                         'placeId': place.pk,
-                        'detailsUrl': 'https://raw.githubusercontent.com/devmanorg/where-to-go-frontend/master/places/moscow_legends.json',
+                        'detailsUrl': reverse('place_details', args=[place.pk]),
                     },
-                },
+                }
             )
-        geo_data = {'type': 'FeatureCollection', 'features': geo_features}
+        geo_data = {'type': 'FeatureCollection', 'features': geo_jsons}
         context['geo_data'] = geo_data
         return context
 
