@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from where_to_go.places.models import Image, Place
 
 PREVIEW_RATIO = 0.3
+NO_EXTRA_INLINE_FORMS = 0
 
 admin.site.register(Image)
 
@@ -16,6 +17,7 @@ class ImageInline(admin.TabularInline):
 
     model = Image
     readonly_fields = ('preview_image',)
+    extra = NO_EXTRA_INLINE_FORMS
 
     @admin.display(description=_('Preview'))
     def preview_image(self, image: Image) -> str:
