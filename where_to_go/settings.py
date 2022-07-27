@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'where_to_go.places',
     'adminsortable2',
+    'tinymce',
 ]
 
 MIDDLEWARE = [

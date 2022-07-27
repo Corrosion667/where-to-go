@@ -4,6 +4,7 @@ import os
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from tinymce.models import HTMLField
 
 TITLE_MAX_LENGTH = 200
 NON_ZERO_INDEX = 1
@@ -14,7 +15,7 @@ class Place(models.Model):
 
     title = models.CharField(unique=True, max_length=TITLE_MAX_LENGTH, verbose_name=_('Title'))
     description_short = models.TextField(verbose_name=_('Short description'), blank=True)
-    description_long = models.TextField(verbose_name=_('Full description'), blank=True)
+    description_long = HTMLField(verbose_name=_('Full description'), blank=True)
     latitude = models.FloatField(verbose_name=_('Latitude'))
     longitude = models.FloatField(verbose_name=_('Longitude'))
 

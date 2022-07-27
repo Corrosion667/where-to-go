@@ -95,6 +95,14 @@ python-versions = "*"
 Django = ">=4.0"
 
 [[package]]
+name = "django-tinymce"
+version = "3.4.0"
+description = "A Django application that contains a widget to render a form field as a TinyMCE editor."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "docutils"
 version = "0.19"
 description = "Docutils -- Python Documentation Utilities"
@@ -577,7 +585,7 @@ typing_extensions = ">=3.6,<5.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "c3dcf97b2f7b85eddfb2e8b0442b74abefb3d2fbd6adb28a0408e27d26dc670b"
+content-hash = "0ce915cf483c8c6dc6435193f48751592cc9e212fa98c09c88d6229953aec7d7"
 
 [metadata.files]
 asgiref = []
@@ -600,6 +608,7 @@ darglint = [
 ]
 django = []
 django-admin-sortable2 = []
+django-tinymce = []
 docutils = []
 eradicate = [
     {file = "eradicate-2.1.0-py3-none-any.whl", hash = "sha256:8bfaca181db9227dc88bdbce4d051a9627604c2243e7d85324f6d6ce0fd08bb2"},
