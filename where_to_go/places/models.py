@@ -64,6 +64,7 @@ class Image(models.Model):
 
         verbose_name = _('Image')
         verbose_name_plural = _('Images')
+        ordering = ['position']
 
     def __str__(self) -> str:
         """Present object as a string.
