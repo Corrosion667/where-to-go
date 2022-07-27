@@ -84,6 +84,17 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-admin-sortable2"
+version = "2.1"
+description = "Generic drag-and-drop sorting for the List, the Stacked- and the Tabular-Inlines Views in the Django Admin"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = ">=4.0"
+
+[[package]]
 name = "docutils"
 version = "0.19"
 description = "Docutils -- Python Documentation Utilities"
@@ -566,7 +577,7 @@ typing_extensions = ">=3.6,<5.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "d8308abbde88574dbb40947cf129e7328ff14b76d350d8aecfadc3d6020599bb"
+content-hash = "c3dcf97b2f7b85eddfb2e8b0442b74abefb3d2fbd6adb28a0408e27d26dc670b"
 
 [metadata.files]
 asgiref = []
@@ -588,6 +599,7 @@ darglint = [
     {file = "darglint-1.8.1.tar.gz", hash = "sha256:080d5106df149b199822e7ee7deb9c012b49891538f14a11be681044f0bb20da"},
 ]
 django = []
+django-admin-sortable2 = []
 docutils = []
 eradicate = [
     {file = "eradicate-2.1.0-py3-none-any.whl", hash = "sha256:8bfaca181db9227dc88bdbce4d051a9627604c2243e7d85324f6d6ce0fd08bb2"},
